@@ -14,7 +14,7 @@ describe('', function(){
 	it('should not mutate original collection', function(){
 		var col = [{"some":"value"}];
 		relax.map(col, 
-			function(item, emit){
+			function(item){
 				item.some='mutated';
 				emit(item);  
 			});
@@ -24,7 +24,7 @@ describe('', function(){
 		
 	it('multiples emit for item', function(){
 		var result=relax.map(ciudades, 
-		function(ciudad, emit){
+		function(ciudad){
 			ciudad.zonas.forEach(function(zona){
 				emit(ciudad.ciudad, zona);  
 			});
@@ -33,20 +33,21 @@ describe('', function(){
 	});
 
 	it('should not pollute the global namespace', function(){
+		//debugger;
 		var result=relax.map(ciudades, 
-		function(ciudad, emit){
+		function(ciudad){
 			ciudad.zonas.forEach(function(zona){
 				emit(ciudad.ciudad, zona);  
 			});
 		});
-		
+		//console.log(typeof(emit));
 		expect(typeof(emit) == "undefined").toBe(true);
 	});
 
 	it('should not throw if any of the items is different from the others', function(){
 		ciudades.push({username:"aUser"});
 		var result=relax.map(ciudades, 
-		function(ciudad, emit){
+		function(ciudad){
 			ciudad.zonas.forEach(function(zona){
 				emit(ciudad.ciudad, zona);  
 			});
@@ -65,7 +66,7 @@ describe('', function(){
 
 	it('simple test with key and values reverted', function(){
 		var result=relax.map(ciudades, 
-		function(ciudad, emit){
+		function(ciudad){
 			ciudad.zonas.forEach(function(zona){
 				emit(zona, ciudad.ciudad);  
 			});
@@ -75,7 +76,7 @@ describe('', function(){
 
 	it('if not value passed to emit, in the result the value should be null', function(){
 		var result=relax.map(ciudades, 
-		function(ciudad, emit){
+		function(ciudad){
 			ciudad.zonas.forEach(function(zona){
 				emit([ciudad.ciudad, zona]);  
 			});
@@ -89,7 +90,7 @@ describe('', function(){
 
 	it('if not key passed to emit, in the result the key should be null', function(){
 		var result=relax.map(ciudades, 
-		function(ciudad, emit){
+		function(ciudad){
 			ciudad.zonas.forEach(function(zona){
 				emit(null,[ciudad.ciudad, zona]);  
 			});

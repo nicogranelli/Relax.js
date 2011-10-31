@@ -39,8 +39,6 @@ describe('Example of usage', function(){
 	});
 	it('shoud work ;)', function(){
 	
-		console.log(docs);
-		
 		var rs = relax.map(docs, function(doc){
 			doc.country.cities.forEach(function(city){
 				emit([doc.country.name, city.name]);
@@ -48,8 +46,6 @@ describe('Example of usage', function(){
 		});
 		
 		expect(rs.length).toBe(6);
-		
-		console.log(rs);
 	});
 	
 });
