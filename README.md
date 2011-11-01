@@ -73,17 +73,16 @@ Here we emit once for every city, where the emitted key is an array containing t
 
 ###Result
 
-k : ["Italy", "Rome"], v: null
-
-k : ["Italy", "Milan"], v: null
-
-k : ["Italy", "Venezia"], v: null
-
-k : ["Spain", "Madrid"], v: null
-
-k : ["Spain", "Barcelona"], v: null
-
-k : ["Spain", "Sevilla"], v: null
+```
+[
+	{"key":["Italy","Milan"] , "value":null},	
+	{"key":["Italy","Rome"] , "value":null},
+	{"key":["Italy","Venezia"] , "value":null},
+	{"key":["Spain","Barcelona"] , "value":null},
+	{"key":["Spain","Madrid"] , "value":null},
+	{"key":["Spain","Sevilla"] , "value":null}
+]
+```
 
 ###Emiting values
 
@@ -99,17 +98,16 @@ We a little change in the map function:
 
 the result will be:
 
-k : "Italy", v: "Rome"
-
-k : "Italy", v: "Milan"
-
-k : "Italy", v: "Venezia"
-
-k : "Spain", v: "Madrid"
-
-k : "Spain", v: "Barcelona"
-
-k : "Spain", v: "Sevilla"
+```
+[
+	{"key":"Italy" , "value":"Milan"},
+	{"key":"Italy" , "value":"Rome"},
+	{"key":"Italy" , "value":"Venezia"},
+	{"key":"Spain" , "value":"Barcelona"},
+	{"key":"Spain" , "value":"Madrid"},
+	{"key":"Spain" , "value":"Sevilla"}
+]
+```
 
 Features:
 --------
